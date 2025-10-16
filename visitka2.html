@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<title>vis</title>
+<link href="style7.css" rel="stylesheet" type="text/css" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+  <header>
+    <img src="images/photo_2025-06-26_17-45-42.png" alt="Ваше фото" class="avatar" />
+    <h1>Ефлютина Ирина Юрьевна</h1>
+    <p class="lead">
+      Коротко о себе: студент, учусь на дизайнера, хочу закончить 4 курс. 
+    </p>
+    <nav>
+      <a href="#about">О себе</a>
+      <a href="#portfolio">Портфолио</a>
+      <a href="#flipcharts">Наведи сюда</a>
+      <a href="#slider">Работы</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+  </header>
+  <section id="about" aria-labelledby="about-title">
+    <div class="card card-padding">
+      <span class="badge">Обо мне</span>
+      <h2 id="about-title">Коротко обо мне (очень коротко)</h2>
+      <div id="about-content">
+        Учусь на специальности прикладная информатика в дизайне.<br />
+        Опыт работы с HTML, CSS, JavaScript.<br />
+        Увлечена работой с фирменным стилем.
+      </div>
+    </div>
+</section>
+  <section id="portfolio" aria-labelledby="portfolio-title">
+    <div class="grid" id="portfolio-grid">
+      <div class="card">
+        <h3>Опыт и образование</h3>
+        <ul>
+          <li>Почти бакалавр, Университет ПТД (2022–)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Навыки</h3>
+        <ul>
+          <li>HTML5, CSS3, JavaScript</li>
+          <li>ACCESS</li>
+          <li>Адаптивная верстка</li>
+          <li>Adobe программы</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section id="flipcharts" aria-labelledby="flip-title">
+    <div class="card card-padding">
+      <span class="badge badge-dark">Флип</span>
+      <h2 id="flip-title">Карточки с фото на обратной стороне</h2>
+      <p class="text-muted">
+        Наведите курсор на карточку, чтобы увидеть обратную сторону.
+      </p>
+      <div class="flipset" id="flipset"></div>
+    </div>
+  </section>
+  <section id="slider" aria-labelledby="slider-title">
+    <div class="card card-padding card-relative">
+      <span class="badge">Работы</span>
+      <h2 id="slider-title" class="blue-dark">Моё</h2>
+      <div class="slider" aria-roledescription="carousel" aria-label="Слайдер проектов">
+        <div class="slides" id="slides">
+          <div class="slide">
+            <img src="images/рендернаушникиз34.jpg" alt="Проект 1" />
+            <p>Проект 1: краткое описание</p>
+          </div>
+          <div class="slide">
+            <img src="images/iPad Pro - 11_ (6th generation).png" alt="Проект 2" />
+            <p>Проект 2: краткое описание</p>
+          </div>
+          <div class="slide">
+            <img src="images/1.png" alt="Проект 3" />
+            <p>Проект 3: краткое описание</p>
+          </div>
+          <div class="slide">
+            <img src="images/iPad Pro - 11_ (6th generation).png" alt="Проект 4" />
+            <p>Проект 4: дополнительное фото</p>
+          </div>
+          <div class="slide">
+            <img src="images/рендер скейтстул п34.jpg" alt="Проект 5" />
+            <p>Проект 5: дополнительное фото</p>
+          </div>
+        </div>
+        <div class="slider-controls">
+          <button id="prev" aria-label="Предыдущий слайд">‹</button>
+          <button id="next" aria-label="Следующий слайд">›</button>
+        </div>
+        <div class="dots" id="dots" role="tablist" aria-label="Навигация по слайдам">
+          <span class="dot active" data-index="0" role="tab" aria-selected="true" tabindex="0"></span>
+          <span class="dot" data-index="1" role="tab" aria-selected="false" tabindex="0"></span>
+          <span class="dot" data-index="2" role="tab" aria-selected="false" tabindex="0"></span>
+          <span class="dot" data-index="3" role="tab" aria-selected="false" tabindex="0"></span>
+          <span class="dot" data-index="4" role="tab" aria-selected="false" tabindex="0"></span>
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="contact" aria-labelledby="contact-title">
+    <div class="card card-padding card-relative">
+      <span class="badge">Контакты</span>
+      <h2 id="contact-title">Связаться</h2>
+      <p>Чтобы связаться: <a href="mailto:email@example.com">email@example.com</a> • +1 234 567 890</p>
+      <button class="cta" id="open-form">Открыть форму связи</button>
+    </div>
+  </section>
+  <footer>
+      примерно 15-20 минут(perplexiti) большуючасть времени потратила на поиск фотографий 
+	  © 2025 ЕИЮ. Все права защищены и мои тоже.
+</footer>
+  <script src="script2.js"></script>
+</body>
+</html>

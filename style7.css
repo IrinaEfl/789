@@ -1,0 +1,356 @@
+:root {
+  --bg: #ffffff;
+  --card: #f7f7fb;
+  --text: #111111;
+  --muted: #666666;
+  --blue: #2a6df6;
+  --blue-dark: #1b4edc;
+  --yellow: #ffd400;
+  --ink: #000000;
+  --shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  --ring: 0 0 0 4px rgba(42, 109, 246, 0.25);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0; padding: 0; height: 100%;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+header {
+  padding: 28px 20px 20px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  background: #fff;
+  position: relative;
+}
+
+.avatar {
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--ink);
+  margin: 0 auto 12px;
+  display: block;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* Боковые фотографии в форме круга с разными картинками */
+.side-avatar {
+  position: absolute;
+  top: 50%;
+  width: 80px; height: 80px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  animation: side-shift 4s ease-in-out infinite alternate;
+}
+
+.side-avatar.left {
+  left: 10px;
+}
+
+.side-avatar.right {
+  right: 10px;
+  animation-direction: alternate-reverse;
+}
+
+@keyframes side-shift {
+  0%, 100% {
+    transform: translateY(-50%) translateX(0);
+    filter: brightness(1);
+  }
+  50% {
+    transform: translateY(-50%) translateX(10px);
+    filter: brightness(1.1);
+  }
+}
+
+h1 {
+  margin: 8px 0 6px;
+  font-size: clamp(1.8rem, 2.5vw, 2.6rem);
+  color: var(--ink);
+}
+
+p.lead {
+  color: var(--muted);
+  margin: 0 auto 14px;
+  max-width: 700px;
+}
+
+nav {
+  margin-top: 8px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: var(--blue);
+  margin: 0 6px;
+  display: inline-block;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+nav a:hover {
+  transform: translateY(-1px);
+  background: #1e64e0;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid #e5e5f0;
+  border-radius: 14px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 1000px;
+  box-shadow: var(--shadow);
+  color: var(--ink);
+}
+
+.card-padding {
+  padding: 24px;
+}
+
+.badge {
+  display: inline-block;
+  background: var(--blue);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 9999px;
+  font-size: 12px;
+  user-select: none;
+}
+
+.badge-dark {
+  background: var(--blue-dark);
+}
+
+/* Флип-карточки */
+.flipset {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 16px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.flipcard {
+  position: relative;
+  flex: 0 0 30%;
+  height: 160px;
+  border-radius: 12px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.flipcard > div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+}
+
+.flipface {
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+.flipback {
+  background: var(--blue-dark);
+  color: white;
+  transform: rotateY(180deg);
+  overflow: hidden;
+}
+
+.flipcard:hover .flipface {
+  transform: rotateY(180deg);
+}
+
+.flipcard:hover .flipback {
+  transform: rotateY(0);
+}
+
+/* Обратная сторона - фото + затемнение */
+.flipback img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  opacity: 0.7;
+  z-index: 1;
+}
+
+.flipback div {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Слайдер */
+.slider {
+  max-width: 800px;
+  margin: 16px auto 0;
+  height: 220px;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%;
+  height: 220px;
+}
+
+.slide {
+  min-width: 100%;
+  height: 200px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  background: var(--yellow);
+  border-radius: 10px;
+}
+
+.slide img {
+  max-height: 120px;
+  width: auto;
+  border-radius: 10px;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.15);
+}
+
+.slide p {
+  color: #111;
+  margin: 12px 0 0;
+  font-weight: 600;
+}
+
+/* Слайдер кнопки и точки */
+.slider-controls {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  padding: 0 10px;
+  pointer-events: none;
+}
+
+.slider-controls button {
+  pointer-events: auto;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.slider-controls button:hover,
+.slider-controls button:focus {
+  background: rgba(0, 0, 0, 0.8);
+  outline: none;
+}
+
+.dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  padding: 12px 0 0;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background: #333;
+}
+
+/* Контактный блок */
+.contact-gif {
+  width: 100px;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 12px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px 0;
+  color: var(--muted);
+}
+
+/* Адаптив */
+@media (max-width: 900px) {
+  .grid {
+    flex-direction: column;
+  }
+  .flipset {
+    justify-content: flex-start;
+  }
+  .flipset .flipcard {
+    width: 80vw;
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 700px) {
+  header {
+    padding: 20px 10px 20px;
+  }
+  nav a {
+    padding: 8px 12px;
+    margin: 0 4px;
+  }
+  .side-avatar {
+    display: none;
+  }
+  section {
+    padding: 40px 10px;
+  }
+}
+
